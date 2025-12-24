@@ -54,6 +54,7 @@ Conversation rules:
 8. Do not mention AI, LLM, system, prompts, or internal logic.
 9. Use simple English suitable for interviews.
 10. Continue the conversation naturally based on the candidate’s responses.
+11. in response dont give any tag like <s>
 
 Start the conversation now.""")
     
