@@ -1,17 +1,13 @@
 import streamlit as st
-from main import chatbot   # fixed backend wala chatbot
+from main import chatbot   
 
-# =========================
-# PAGE CONFIG
-# =========================
+
 st.set_page_config(
     page_title="TalentScout - AI Hiring Assistant",
     layout="centered"
 )
 
-# =========================
-# SESSION INIT
-# =========================
+# sessions
 if "session_id" not in st.session_state:
     st.session_state.session_id = "candidate_1"
 
@@ -21,9 +17,7 @@ if "chat_started" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# =========================
-# HEADER
-# =========================
+# Header
 st.markdown("""
 <div style="text-align:center; padding: 10px 0;">
     <h1 style="color: #2E86AB;">TalentScout - AI Hiring Assistant</h1>
@@ -32,9 +26,8 @@ st.markdown("""
 <hr style="margin-top: -10px;">
 """, unsafe_allow_html=True)
 
-# =========================
-# FORM (ONLY ONCE)
-# =========================
+
+# form page
 if not st.session_state.chat_started:
 
     st.markdown("""

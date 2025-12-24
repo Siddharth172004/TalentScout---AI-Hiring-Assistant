@@ -8,14 +8,17 @@ import os
 
 load_dotenv()
 
-parser = StrOutputParser()
+parser = StrOutputParser() #response in clean string
 
+#function for creating a structured memory
 memory = {}
 def history(session_id: str):
     if session_id not in memory:
         memory[session_id] = InMemoryChatMessageHistory()
     return memory[session_id]
 
+
+#function for calling LLm
 def chatbot(user_input: str, data: str, session_id: str):
 
     model = ChatOpenAI(
@@ -25,7 +28,7 @@ def chatbot(user_input: str, data: str, session_id: str):
         temperature= 0.7
     )
     
-
+       
     system_prompt = (f"""You are a professional Hiring Assistant chatbot.
 
 IMPORTANT INSTRUCTIONS:
@@ -58,14 +61,16 @@ Conversation rules:
 
 Start the conversation now.""")
     
+    #final structured prompt
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
         MessagesPlaceholder(variable_name="history"),
         ("human", "{input}")
     ])
 
-    chain = prompt | model | parser
-
+    chain = prompt | model | parser #runnablechain
+    
+    # Attach session-based conversational memory to the LLM chain
     chat_with_memory = RunnableWithMessageHistory(
         chain,
         history,
