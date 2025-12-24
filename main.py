@@ -39,7 +39,7 @@ Candidate details:
 - Tech Stack: {data["user_techstack"]}
 
 Conversation rules:
-1. Always greet the candidate using their name - {data["user_name"]}.
+1. Always greet and ask the candidate "hows his day Going" using their name - {data["user_name"]}.
 2. First message:
    - Greet politely
    - Ask how their day is going (friendly tone)
