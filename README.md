@@ -4,7 +4,7 @@ A smart conversational AI assistant that automates **initial candidate screening
 <p align="center">
   <img src="https://img.shields.io/badge/Framework-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
   <img src="https://img.shields.io/badge/AI-LangChain-0A66C2?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/LLM-Mistral--7B-8A2BE2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/LLM-8A2BE2?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Deployment-Streamlit%20Cloud-00C853?style=for-the-badge" />
 </p>
 
@@ -50,8 +50,9 @@ TalentScout solves this by providing an **automated, scalable, and conversationa
 - 🧠 Context-aware follow-up questions  
 - 🔄 Memory-enabled interaction using LangChain  
 - 🧑‍💼 Structured & professional candidate flow  
-- 🌐 Deployed and accessible online  
-- 💻 Simple and intuitive Streamlit UI  
+- 📊 Basic logging to track chatbot activity  
+- ⚠️ Exception handling for runtime error management  
+- 💻 Simple and intuitive Streamlit UI    
 
 ---
 
@@ -73,9 +74,16 @@ Candidate interacts with the Streamlit-based UI.
 LangChain structures prompts and maintains conversation memory.
 
 ### 3️⃣ Response Generation  
-Mistral LLM generates context-aware, professional responses.
+LLM generates context-aware, professional responses.
 
-### 4️⃣ UI Rendering  
+### 4️⃣ Logging & Error Handling
+The application implements basic logging and exception handling to improve debugging and system reliability.
+
+- Logging level used: **INFO**  
+- Logs are stored in **app.log**  
+- Errors are captured and handled gracefully to prevent application crashes  
+
+### 5️⃣ UI Rendering  
 Responses are displayed back to the user in real time.
 
 *(A workflow diagram is included in the project documentation.)*
