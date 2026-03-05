@@ -3,10 +3,19 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
+import logging
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    filename="app.log"
+)
+
+logger = logging.getLogger(__name__)
 
 parser = StrOutputParser() #response in clean string
 
@@ -21,8 +30,11 @@ def history(session_id: str):
 #function for calling LLm
 def chatbot(user_input: str, data: str, session_id: str):
 
+    logger.info(f"Chatbot called | session: {session_id}")
+    logger.info(f"User input: {user_input}")
+
     model = ChatOpenAI(
-        model = "mistralai/mistral-7b-instruct:free",
+        model = "openrouter/free",
         openai_api_key = os.getenv("OPENROUTER_API_KEY"),
         openai_api_base="https://openrouter.ai/api/v1",
         temperature= 0.7
@@ -77,10 +89,13 @@ Start the conversation now.""")
         input_messages_key="input",
         history_messages_key="history"
     )
-
-    result = chat_with_memory.invoke(
-        {"input": user_input},
-        config={"configurable": {"session_id": session_id}}
-    )
-
-    return result
+    try:  
+        result = chat_with_memory.invoke(
+            {"input": user_input},
+            config={"configurable": {"session_id": session_id}}
+        )
+        return result
+    except Exception as e:
+        logger.error(f"Error occurred: {e}")
+        return "Something Went Wrong, Please try again later"
+        

@@ -86,9 +86,8 @@ if not st.session_state.chat_started:
 
                 st.rerun()
 
-# =========================
 # CHAT UI
-# =========================
+
 if st.session_state.chat_started:
 
     for msg in st.session_state.messages:
