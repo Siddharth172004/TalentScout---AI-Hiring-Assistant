@@ -164,8 +164,7 @@ This project reflects strong practical skills relevant to **AI/ML Intern** roles
 ## 📚 References
 
 - LangChain Documentation  
-- OpenRouter Platform  
-- Mistral AI Documentation  
+- OpenRouter Platform    
 - Streamlit Documentation  
 
 ---
